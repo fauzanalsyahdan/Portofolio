@@ -1,0 +1,536 @@
+<!-- Bootstrap 5.3 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --bs-body-font-family: 'Plus Jakarta Sans', sans-serif;
+        --bs-primary: #3b82f6;
+        --bs-primary-rgb: 59, 130, 246;
+        --bs-secondary-bg: #f8fafc;
+    }
+
+    body {
+        background-color: #f8fafc;
+        color: #1e293b;
+    }
+
+    .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .rounded-4-custom {
+        border-radius: 1.25rem;
+    }
+
+    .rounded-3-custom {
+        border-radius: 0.85rem;
+    }
+
+    .tracking-wider {
+        letter-spacing: 0.08em;
+    }
+
+    .accent-bar {
+        height: 4px;
+        background: linear-gradient(90deg, #3b82f6, #06b6d4, #10b981);
+    }
+
+    .fs-8 {
+        font-size: 0.75rem;
+    }
+
+    /* Galeri gambar dapat diklik untuk membuka tampilan gambar penuh */
+    .gallery-image {
+        height: 200px;
+        object-fit: cover;
+        cursor: zoom-in;
+        transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .gallery-image:hover {
+        filter: brightness(0.92);
+    }
+
+    .image-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: rgba(0, 0, 0, 0.92);
+    }
+
+    .image-lightbox.show {
+        display: flex;
+    }
+
+    .image-lightbox img {
+        display: block;
+        max-width: 95vw;
+        max-height: 90vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .lightbox-close {
+        position: absolute;
+        top: 18px;
+        right: 24px;
+        border: 0;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.16);
+        font-size: 1.8rem;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.28);
+    }
+
+    body.lightbox-open {
+        overflow: hidden;
+    }
+</style>
+
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top py-3 shadow-sm">
+    <div class="container">
+        <a href="portofolio.html#projects" class="btn btn-outline-dark btn-sm rounded-pill font-mono fs-7 d-flex align-items-center gap-2">
+            <i class="bi bi-arrow-left"></i> KEMBALI KE PORTOFOLIO
+        </a>
+        <span class="fw-bold text-dark fs-6 d-none d-md-block">Muh. Fauzan Al Syahdan, S.Tr.T.</span>
+    </div>
+</nav>
+
+<!-- CONTENT CONTAINER -->
+<main class="container py-5">
+    <div class="card border-0 shadow-sm rounded-4-custom overflow-hidden bg-white">
+        <div class="accent-bar"></div>
+        <div class="card-body p-4 p-md-5">
+            
+            <!-- Category Accent -->
+            <div id="csCategory" class="text-success font-mono fw-bold fs-7 mb-2 tracking-wider">
+                CATEGORY
+            </div>
+
+            <!-- Main Title -->
+            <h1 id="csTitle" class="fw-extrabold text-dark mb-3 display-6">
+                Judul Proyek
+            </h1>
+
+            <!-- Tech Badges -->
+            <div id="csBadges" class="d-flex flex-wrap gap-2 mb-4 font-mono fs-7">
+            </div>
+
+            <hr class="my-4 text-muted opacity-25">
+
+            <!-- Latar Belakang & Tujuan -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-6">
+                    <div class="border-start border-3 border-success ps-3 h-100">
+                        <span class="text-success font-mono fs-7 fw-bold d-block mb-2">LATAR BELAKANG & PERMASALAHAN</span>
+                        <p id="csBackground" class="text-secondary leading-relaxed fs-6 mb-0">
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="border-start border-3 border-dark ps-3 h-100">
+                        <span class="text-dark font-mono fs-7 fw-bold d-block mb-3">TUJUAN & FITUR UTAMA</span>
+                        <div id="csGoals" class="d-flex flex-column gap-3 fs-7 text-secondary">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4 text-muted opacity-25">
+
+            <!-- Pengalaman & Kontribusi Proyek (Experience) -->
+            <div class="mb-5">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                </div>
+
+                <!-- Container Dynamic Experience Content -->
+                <div id="csExperience">
+                </div>
+            </div>
+
+            <hr class="my-4 text-muted opacity-25">
+
+            <!-- Tangkapan Layar & Arsitektur (Gallery) -->
+            <div>
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                </div>
+
+                <div id="csGallery" class="row g-4">
+                </div>
+            </div>
+
+            <!-- Bottom Action -->
+            <div class="mt-5 pt-3 border-top d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <a href="portofolio.html#projects" class="btn btn-outline-secondary rounded-pill font-semibold px-4 py-2">
+                    <i class="bi bi-arrow-left me-1"></i> Kembali ke Daftar Proyek
+                </a>
+                <a href="portofolio.html#contact" class="btn btn-primary rounded-pill font-semibold px-4 py-2">
+                    <i class="bi bi-envelope-fill me-1"></i> Diskusi Seputar Proyek Ini
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="border-top bg-white py-4 text-center fs-7 text-muted">
+    <p class="m-0">&copy; 2026 Muh. Fauzan Al Syahdan, S.Tr.T. • Portofolio Studi Kasus</p>
+</footer>
+
+<!-- Popup gambar penuh (lightbox) -->
+<div id="imageLightbox" class="image-lightbox" role="dialog" aria-modal="true" aria-label="Tampilan gambar penuh" aria-hidden="true">
+    <button type="button" id="lightboxClose" class="lightbox-close" aria-label="Tutup gambar">&times;</button>
+    <img id="lightboxImage" src="" alt="Gambar proyek dalam ukuran penuh">
+</div>
+
+<!-- Script Load Data Studi Kasus berdasarkan Parameter URL -->
+<script>
+    const projectDetails = [
+        {
+            title: "Project RevoU Case Study - Analysis Trend dari Dataset E-Commerce Menggunakan Google BigQuery",
+            category: "DATA ANALYTICS, BUSINESS INTELLIGENCE, DATA VISUALIZATION",
+            tags: ["Google BigQuery", "SQL", "Looker Studio", "Data Preparation", "Data Analytics"],
+            background: "Menganalisis dataset e-commerce dari proyek manager kemudian mengekstraksi tren penjualan, serta perilaku pengguna. Analisis dilakukan dengan memanfaatkan Google BigQuery untuk melakukan query pada tabel users, order_items, orders, dan products kemudian memvisualisasi temuan pada dataset untuk mendapatkan insight.",
+            goals: [
+                "Melakukan data preparation dan membuat query dataset e-commerce menggunakan Google BigQuery.",
+                "Menganalisis temuan pada dataset dan insight apa yang dapat di ambil.",
+                "Menyajikan hasil analisis dan rekomendasi bisnis dalam format Harvard Business Review (HBR)."
+            ],
+            experience: {
+                role: "Student of Class Data Analytics",
+                period: "Okt 2026",
+                responsibilities: [
+                    "Melakukan Data Preparation database e-commerce dari tabel users, order_items, orders, dan products menggunakan Google BigQuery.",
+                    "Menerapkan konsep Harvard Business Review (HBR) untuk Analysis trend dari dataset e-commerce kemudian menentukan 3 insight yang ditemukan.",
+                    "Melakukan visualisasi menggunakan Data Studio kemudian Menyajikan temuan menggunakan PPT 2 Slide."
+                ],
+            },
+            images: [
+                { src: "image/RevoU.jpg", caption: "Visualisasi & Dashboard Trend E-Commerce" },
+                { src: "image/RevoU1.jpg", caption: "Query & Data Preparation di Google BigQuery" },
+                { src: "image/RevoU2.jpeg", caption: "Query & Data Preparation di Google BigQuery" },
+                { src: "image/RevoU3.jpeg", caption: "Query & Data Preparation di Google BigQuery" },
+                { src: "image/RevoU4.jpeg", caption: "Query & Data Preparation di Google BigQuery" }
+
+            ]
+        },
+        {
+            title: "Implementasi Text Convolutional Neural Network Dengan Fasttext Untuk Deteksi Komentar Spam Bermuatan Perjudian Online Pada Youtube (Skripsi)",
+            category: "ARTIFICIAL INTELLIGENCE, MACHINE LEARNING, NLP",
+            tags: ["Python", "NLP", "Deep Learning", "Youtube", "API"],
+            background: "Maraknya komentar spam promosi perjudian online di platform YouTube dapat meningkatkan pengguna aktif situs judi online. Proyek skripsi ini mengimplementasi klasifikasi teks NLP berbasis Machine Learning aggar mengenali dan memahami konteks komentar yang terindikasi promosi judi online.",
+            goals: [
+                "Merancang model klasifikasi Machine Learning dalam mendeteksi komentar Bermuatan promosi perjudian online.",
+                "Membangun sistem terintegrasi langsung dengan YouTube Data API v3.",
+                "Mengembangkan antarmuka dashboard interaktif berbasis PHP Natif untuk menghapus komentar promosi perjudian online pada video youtube."
+            ],
+            experience: {
+                role: "Full-Stack Developer",
+                period: "4 Bulan (2026)",
+                organization: "Penelitian Skripsi / Riset",
+                responsibilities: [
+                    "Membuat dan menyesuaikan dataset sesuai kebutuhan.",
+                    "Membuat dan melatih model mesin learning.",
+                    "Membangun Dashboard interaktif menggunakan PHP untuk visualisasi tren spam."
+                ]
+            },
+            images: [
+                { src: "image/skripsi.jpg", caption: "Arsitektur sistem Website" },
+                { src: "image/skripsi1.png", caption: "Arsitektur pengumpulan data" },
+                { src: "image/skripsi2.png", caption: "User interface" },
+                { src: "image/skripsi3.png", caption: "User interface" },
+                { src: "image/skripsi4.png", caption: "User interface" }
+            ]
+        },
+        {
+            title: "Aplikasi sahabat parkir (Mobile APK)",
+            category: "MOBILE DEVELOPMENT, SMART CITY, UI/UX DESIGN",
+            tags: ["Android Studio", "Rest API", "Mobile APK", ],
+            background: "Parkir liar di pusat perkotaan kerap memicu kebocoran PAD (Pendapatan Asli Daerah) serta kemacetan lalu lintas. Aplikasi Sahabat Parkir dirancang untuk meningkatkan potensi PAD dan mencegah parkir liar.",
+            goals: [
+                "Menyediakan sistem pembayaran Parkir otomatis menggunakan AI Automatic Number Plate Recognition.",
+                "Menerapkan sistem pembayaran yang terintegrasi dengan Dishub.",
+                "Menyajikan ke praktisan dengan menggunakan aplikasi mobile."
+            ],
+            experience: {
+                role: "fullstack",
+                period: "Jun (2024)",
+                responsibilities: [
+                    "Membuat antarmuka aplikasi mobile.",
+                    "Membuat endpoint API untuk menampilkan histori transaksi ke halaman history.",
+                    "Mengintegrasikan  Automatic Number Plate Recognition, Pyman Gateway ke Aplikasi Mobile."
+                ],
+            },
+            images: [
+                { src: "image/apk-mobile.png", caption: "Halaman utama aplikasi" },
+                { src: "image/apkmobile.jfif", caption: "Alur Pengguna Aplikasi Mobile Sahabat Parkir" },
+                { src: "image/apk-mobile2.png", caption: "Modul Pembayaran Cashless & QRIS" }
+            ]
+        },
+        {
+            title: "Dashboard pendapatan pelabuhan Pantoloan dan Toli-Toli",
+            category: "DATA VISUALIZATION, FINANCIAL DASHBOARD, MARITIME",
+            tags: ["Docker, PHP", "Laravel", "Bootstrap 5", "Chart.js", "MySQL"],
+            background: "Permiantaan dari Devisi keuangan jasa maritim. Dashboard ini mengintegrasikan seluruh transaksi operasional Pelabuhan Pantoloan dan Toli-Toli ke satu dashboard untuk divisualisasi. Dibutuhkan untuk mempermudah laporan keuangan.",
+            goals: [
+                "Menampilkan visualisasi grafik interaktif tren pendapatan harian, bulanan, dan tahunan.",
+                "Mempermudah laporan transaksi dari sektor jasa tinda dan pandu pada pelabuhan Pantoloan dan Toli-Toli.",
+                "Membuat fitur untuk menghitung total pendapatan langsung dari database menggunakan SQL."
+            ],
+            experience: {
+                role: "Full-Stack Web ",
+                period: "Sept (2025)",
+                responsibilities: [
+                    "Membuat desain forntend dashboard meggunakan Figma mulai dari penentuan layout dan kombinasi warna.",
+                    "Membuat environment Laravel menggunakan Docker, penyesuaian depedensi sesuai arahan staf expert programming.",
+                    "Membuat dashbord sesuai desain akir menggunakan boostrap 5."
+                ],
+            },
+            images: [
+                { src: "image/pendapatan.png", caption: "Antarmuka Utama Dashboard Pendapatan Pelabuhan" },
+                { src: "image/pendapatan1.png", caption: "Antarmuka Utama Dashboard Pendapatan Pelabuhan" },
+                { src: "image/pendapatan3.png", caption: "Desain awal dashboard hasil diskusi dengan Devisi Keuangan" },
+                { src: "image/pendapatan4.png", caption: "image docker" }
+            ]
+        },
+        {
+            title: "Dashboard inventory Jasa Maritim",
+            category: "LOGISTICS, INVENTORY MANAGEMENT",
+            tags: ["PHP", "GitLab", "Bootstrap 5", "JavaScript", "MySQL"],
+            background: "Untuk mempermudah pemantauan kapal dibutuhkan menu untuk memuat data ketersediaan dan kondisi kapal tunda dan pandu yang dimiliki Pelindo Jasa Maritim",
+            goals: [
+                "Menampilkan data kapal yang tersedia.",
+                "Monitoring Kondisi Kapal.",
+                "Menyediakan riwayat mutasi stok berdasarkan kode kapal dan divisi pengguna."
+            ],
+            experience: {
+                role: "fullstack Web",
+                period: "okt (2025)",
+                responsibilities: [
+                    "Melakukan clone projek untuk penambahan menu sesuai permintaan dari staf expert programming menggunakan GitLab.",
+                    "Membuat menu Docking Event dan Kesiapan Kapal dalam bentuk tabel CRUD.",
+                    "Update projek kedalam GitLab secara berala jika ada perubahan."
+                ],
+            },
+            images: [
+                { src: "image/inventory.png", caption: "Halaman docking yang menmapilkan informasi kapal" },
+                { src: "image/inventory1.png", caption: "Menu untuk menampilkan jumlah unit kapal" },
+                { src: "image/inventory2.png", caption: "halaman yang menampilkan kondisi dari kapal    " }
+            ]
+        },
+        {
+            title: "Aplikasi Web UMKM Mr.Thaha kopi",
+            category: "E-COMMERCE, WEB APP, PROFILE COMPANY",
+            tags: ["Laravel", "Bootstrap 5", "MySQL", "javascript"],
+            background: "Kedai kopi lokal membutuhkan solusi digitalisasi sederhana yang mudah dioperasikan tanpa biaya server yang mahal. Proyek ini menghadirkan e-katalog menu interaktif dan sistem kasir Point of Sale (POS) cepat untuk operasional bisnis Mr.Thaha Kopi.",
+            goals: [
+                "Merancang katalog produk interaktif yang nyaman diakses melalui perangkat ponsel pelanggan.",
+                "Menyediakan kalkulasi transaksi otomatis untuk pemesanan Online.",
+                "Penyimpanan riwayat pesanan berbasis browser ."
+            ],
+            experience: {
+                role: "fullstack Web",
+                period: "Mei (2023)",
+                responsibilities: [
+                    "Membuat dashboard untuk manajemen pendapatan dari produk yang terjual.",
+                    "Membuat fitur keranjang belanja untuk Pemesanan produk melalui web.",
+                    "Membuat portofolio perusahaan pada website.",
+                ],
+            },
+            images: [
+                { src: "image/umkm.png", caption: "Launching pada event IWAPI (Ikatan Wanita Pengusaha Indonesia) Makassar" },
+                { src: "image/umkm1.png", caption: "Halaman utama" },
+                { src: "image/umkm2.jpg", caption: "Halaman utama" },
+                { src: "image/umkm3.jpg", caption: "CRUD untuk pengaturan Produk" },
+                { src: "image/umkm4.jpg", caption: "Dashboard Manajemen Pendapatan" },
+                { src: "image/umkm5.jpg", caption: "Tim bersama client UMKM" }
+            ]
+        },
+        {
+            title: "Pengolahan Big Data Terdistribusi Apache Spark & Hadoop Cluster",
+            category: "BIG DATA, DISTRIBUTED SYSTEMS, IOT PIPELINE",
+            tags: ["Apache Spark", "Hadoop HDFS", "Proxmox VE", "Docker", "REST API", "Scala", "MySQL"],
+            background: "Proyek ini dikembangkan untuk mengintegrasikan data Internet of Things (IoT) pada sistem Smart Agriculture dengan teknologi Big Data. Data sensor pertanian yang tersimpan dalam database perlu dikumpulkan, disimpan, dan diolah agar dapat divisualisasikan serta dianalisis untuk menemukan pola kondisi lingkungan pertanian. Proyek ini memanfaatkan Hadoop Distributed File System (HDFS) dan Apache Spark untuk membangun alur pengolahan data dari database hingga analisis dan clustering.",
+            goals: [
+                "Menyimpan data sensor dalam format JSON pada Hadoop Distributed File System (HDFS).",
+                "Mengolah dan mentransformasikan data menggunakan Apache Spark dan PySpark melalui Jupyter Notebook.",                
+                "Mengintegrasikan pipeline data sensor IoT via Docker Container dan REST API (JSON) ke basis data MySQL & Hadoop HDFS.",
+                "Memvisualisasikan data suhu dan kelembapan tanah menggunakan Google Sheets.",
+                "Mengintegrasikan pipeline data sensor IoT via Docker Container dan REST API (JSON) ke basis data MySQL & Hadoop HDFS.",
+                "Mengelompokkan data Smart Agriculture berdasarkan parameter suhu, kelembapan, dan kelembapan tanah, serta memperkirakan jumlah cluster optimal menggunakan Elbow Method."
+            ],
+            experience: {
+                role: "Python Engineer",
+                period: "2025",
+                responsibilities: [
+                    "Menjalankan pemrosesan dan transformasi data menggunakan PySpark melalui Jupyter Notebook.",
+                    "Melakukan eksperimen clustering K-Means menggunakan Elbow Method.",
+                ],
+            },
+            images: [
+                { src: "image/bigdata1.jfif", caption: "visualisasi menggunakan google spreetsheet pada data suhu." },
+                { src: "image/bigdata2.jfif", caption: "Visualisai menggunakan google spreetsheet pada data Kelembapan Tanah" },
+                { src: "image/bigdata3.jfif", caption: "Mengubah field dari data pada smart agriculture untuk mempermudah labeling data." },
+                { src: "image/bigdata4.jfif", caption: "Tampilan Spark Web UI Cluster Management (ALIVE State)" },
+                { src: "image/bigdata5.jfif", caption: "Verifikasi Node Worker & Pengujian Konektivitas Docker API" },
+                { src: "image/bigdata6.jpeg", caption: "ppengujian projek menggunakan sensor IOT" }
+            ]
+        }
+    ];
+
+    // Ambil ID dari URL (Contoh: detail-proyek.html?id=0)
+    const urlParams = new URLSearchParams(window.location.search);
+    let id = parseInt(urlParams.get('id'));
+
+    if (isNaN(id) || id < 0 || id >= projectDetails.length) {
+        id = 0; // Default ke proyek pertama jika parameter tidak valid
+    }
+
+    const data = projectDetails[id];
+
+    // Set Title & Headers
+    document.title = data.title + " - Studi Kasus";
+    document.getElementById('csCategory').innerText = data.category;
+    document.getElementById('csTitle').innerText = data.title;
+    document.getElementById('csBackground').innerText = data.background;
+
+    // Render Badges
+    document.getElementById('csBadges').innerHTML = data.tags.map(tag => 
+        `<span class="badge bg-light text-dark border px-3 py-1.5 rounded-pill">${tag}</span>`
+    ).join('');
+
+    // Render Goals
+    document.getElementById('csGoals').innerHTML = data.goals.map((goal, idx) => `
+        <div class="d-flex align-items-start gap-2">
+            <span class="badge bg-success-subtle text-success border border-success-subtle font-mono px-2 py-1">#${idx + 1}</span>
+            <div class="lh-sm">${goal}</div>
+        </div>
+    `).join('');
+
+    // Render Experience Section
+    const exp = data.experience || {};
+    document.getElementById('csExperience').innerHTML = `
+        <div class="card border rounded-4-custom p-4 bg-white shadow-sm">
+            <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-3 pb-3 border-bottom">
+                <div>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle font-mono px-3 py-1 mb-2">
+                        <i class="bi bi-person-badge-fill me-1"></i> ${exp.role || 'Developer'}
+                    </span>
+                    <h5 class="fw-bold text-dark mb-1">${exp.organization || ''}</h5>
+                </div>
+                <div class="badge bg-light text-dark border font-mono px-3 py-2 fs-7">
+                    <i class="bi bi-calendar3 me-1 text-primary"></i> ${exp.period || '2023 - 2024'}
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <h6 class="fw-bold text-dark fs-7 font-mono mb-2">TANGGUNG JAWAB</h6>
+                <ul class="list-unstyled mb-0 d-flex flex-column gap-2 fs-7 text-secondary">
+                    ${(exp.responsibilities || []).map(item => `
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="bi bi-check-circle-fill text-success fs-6 mt-0.5"></i>
+                            <span>${item}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+            </div>
+
+            ${exp.impact ? `
+            <div class="p-3 bg-success-subtle rounded-3 border border-success-subtle mt-2 fs-7 text-dark">
+                ${exp.impact}
+            </div>
+            ` : ''}
+        </div>
+    `;
+
+    // Render Gallery / Screenshots Section
+    if (data.images && data.images.length > 0) {
+        document.getElementById('csGallery').innerHTML = data.images.map((img, idx) => `
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-3-custom overflow-hidden h-100 bg-white">
+                    <img src="${img.src}" alt="Tangkapan Layar ${idx + 1}" class="gallery-image w-100 border-bottom" data-full-src="${img.src}" tabindex="0" role="button" aria-label="Perbesar gambar: ${img.caption || `Tangkapan Layar ${idx + 1}`}" onerror="this.src='https://placehold.co/600x400/3b82f6/ffffff?text=${encodeURIComponent(data.title.substring(0,25))}...+${idx+1}'">
+                    <div class="p-3 bg-light border-top">
+                        <span class="font-mono fs-8 text-muted d-block fw-semibold">${img.caption || '// Tangkapan Layar Proyek'}</span>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    } else {
+        document.getElementById('csGallery').innerHTML = `
+            <div class="col-12 text-muted fs-7 fst-italic">
+                Belum ada gambar tangkapan layar untuk proyek ini.
+            </div>
+        `;
+    }
+
+    // Buka gambar saja dalam popup saat thumbnail diklik.
+    const lightbox = document.getElementById('imageLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(image) {
+        lightboxImage.src = image.dataset.fullSrc || image.src;
+        lightboxImage.alt = image.alt || 'Gambar proyek';
+        lightbox.classList.add('show');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lightbox-open');
+        lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('show');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImage.src = '';
+        document.body.classList.remove('lightbox-open');
+    }
+
+    document.getElementById('csGallery').addEventListener('click', function (event) {
+        const image = event.target.closest('.gallery-image');
+        if (image) openLightbox(image);
+    });
+
+    document.getElementById('csGallery').addEventListener('keydown', function (event) {
+        const image = event.target.closest('.gallery-image');
+        if (image && (event.key === 'Enter' || event.key === ' ')) {
+            event.preventDefault();
+            openLightbox(image);
+        }
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    // Klik area gelap di luar gambar juga menutup popup.
+    lightbox.addEventListener('click', function (event) {
+        if (event.target === lightbox) closeLightbox();
+    });
+
+    // Tombol Escape untuk menutup popup.
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && lightbox.classList.contains('show')) {
+            closeLightbox();
+        }
+    });
+</script>
