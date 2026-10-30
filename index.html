@@ -1,0 +1,774 @@
+<!-- Bootstrap 5.3 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --bs-body-font-family: 'Plus Jakarta Sans', sans-serif;
+        --bs-primary: #3b82f6;
+        --bs-primary-rgb: 59, 130, 246;
+        --bs-secondary-bg: #f8fafc;
+        --bs-success: #10b981;
+    }
+
+    body {
+        background-color: #f8fafc;
+        color: #1e293b;
+    }
+
+    .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .rounded-4-custom {
+        border-radius: 1.25rem;
+    }
+
+    .rounded-3-custom {
+        border-radius: 0.85rem;
+    }
+
+    .tracking-wider {
+        letter-spacing: 0.08em;
+    }
+
+    .accent-bar {
+        height: 4px;
+        background: linear-gradient(90deg, #3b82f6, #06b6d4, #10b981);
+    }
+
+    .badge-soft-primary {
+        background-color: #eff6ff;
+        color: #1d4ed8;
+        border: 1px solid #bfdbfe;
+    }
+
+    .badge-soft-success {
+        background-color: #ecfdf5;
+        color: #047857;
+        border: 1px solid #a7f3d0;
+    }
+
+    .badge-soft-secondary {
+        background-color: #f1f5f9;
+        color: #475569;
+        border: 1px solid #e2e8f0;
+    }
+
+    .avatar-box {
+        width: 210px;
+        height: 210px;
+        object-fit: cover;
+    }
+
+    .cursor-pointer {
+        cursor: pointer;
+    }
+
+    .toggle-icon {
+        transition: transform 0.25s ease-in-out;
+        display: inline-block;
+    }
+
+    .card-header[aria-expanded="false"] .toggle-icon {
+        transform: rotate(0deg);
+    }
+
+    .card-header[aria-expanded="true"] .toggle-icon {
+        transform: rotate(45deg);
+    }
+
+    /* Style khusus ikon keahlian/perkakas */
+    .skill-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #334155;
+        background-color: #ffffff;
+        padding: 0.5rem 0.85rem;
+        border-radius: 0.5rem;
+        border: 1px solid #e2e8f0;
+        transition: all 0.2s ease;
+    }
+
+    .skill-pill:hover {
+        background-color: #f8fafc;
+        border-color: #cbd5e1;
+        transform: translateY(-2px);
+    }
+
+    .skill-pill img {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+    }
+
+    /* Print Optimization for HRD CV */
+    @media print {
+        .no-print, nav, button, footer {
+            display: none !important;
+        }
+        body {
+            background: white !important;
+            color: #000 !important;
+        }
+        .card {
+            border: 1px solid #cbd5e1 !important;
+            box-shadow: none !important;
+        }
+        .container {
+            max-width: 100% !important;
+            width: 100% !important;
+            padding: 0 !important;
+        }
+    }
+</style>
+
+
+    <!-- NAVBAR -->
+    <nav id="mainNavbar" class="navbar navbar-expand-lg bg-white border-bottom sticky-top py-2 shadow-sm no-print">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#hero">
+                <div class="lh-1">
+                    <span class="fw-bold text-dark d-block fs-6 mb-1">Muh. Fauzan Al Syahdan, S.Tr.T.</span>
+                </div>
+            </a>
+
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-menu nav nav-pills mx-auto bg-light p-1 rounded-pill my-2 my-lg-0 fs-7 font-semibold">
+                    <li class="nav-item"><a href="#hero" class="nav-link text-dark py-1 px-3 rounded-pill">Profil</a></li>
+                    <li class="nav-item"><a href="#education" class="nav-link text-dark py-1 px-3 rounded-pill">Pendidikan</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link text-dark py-1 px-3 rounded-pill">Proyek</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav-link text-dark py-1 px-3 rounded-pill">Keahlian</a></li>
+                    <li class="nav-item"><a href="#experience" class="nav-link text-dark py-1 px-3 rounded-pill">Pengalaman</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link text-dark py-1 px-3 rounded-pill">Kontak</a></li>
+                </ul>
+
+                <div class="d-flex align-items-center gap-2">
+                    <button onclick="window.print()" class="btn btn-outline-primary btn-sm rounded-pill font-bold d-flex align-items-center gap-2">
+                        <i class="bi bi-printer"></i>
+                        <span>Cetak PDF / CV</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<!-- MAIN CONTAINER -->
+<main class="container py-4 space-y-5">
+
+    <!-- ==================== SECTION HERO (PROFIL UTAMA) ==================== -->
+    <section id="hero" class="pt-2 mb-5">
+        <div class="card border-0 shadow-sm rounded-4-custom overflow-hidden bg-white">
+            <div class="accent-bar"></div>
+            <div class="card-body p-4 p-md-5">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-8 text-center text-lg-start">
+
+                        <h1 class="display-6 fw-extrabold text-dark mt-2 mb-1">
+                             <span class="text-primary">Muh. Fauzan Al Syahdan, S.Tr.T.</span>
+                        </h1>
+
+                        <h5 class="text-secondary fw-bold font-mono fs-6 mb-3">
+                            Sarjana Terapan Teknik (S.Tr.T.)
+                        </h5>
+
+                        <p class="text-muted fs-6 leading-relaxed mb-4">
+                            Bagi saya, perkembangan dalam hal inovasi dan teknologi bukan hanya sekadar menciptakan sesuatu yang baru, tapi juga bagaimana menghadirkan solusi yang mampu memecahkan masalah, meningkatkan efisiensi, menghadapi persaingan yang terus berkembang, serta mendorong pengembangan diri untuk terus belajar dan beradaptasi.
+                        </p>
+
+                        <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-2 mb-4 fs-7">
+                            <span class="bg-light border px-3 py-1.5 rounded-3 text-secondary">
+                                <i class="bi bi-mortarboard-fill text-primary me-1"></i> Fresh Graduate
+                            </span>
+                            <span class="bg-light border px-3 py-1.5 rounded-3 text-secondary">
+                                <i class="bi bi-geo-alt-fill text-danger me-1"></i> Makassar
+                            </span>
+                            <span class="bg-light border px-3 py-1.5 rounded-3 text-secondary">
+                                <i class="bi bi-envelope-fill text-secondary me-1"></i> muhf97458@gmail.com
+                            </span>
+                        </div>
+
+                        <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-2">
+                            <a href="#contact" class="btn btn-primary btn-sm rounded-3 px-4 py-2 font-bold d-flex align-items-center gap-2">
+                                <i class="bi bi-send-fill"></i> Hubungi Saya
+                            </a>
+                            <a href="#projects" class="btn btn-outline-secondary btn-sm rounded-3 px-4 py-2 font-bold d-flex align-items-center gap-2">
+                                <i class="bi bi-code-slash text-primary"></i> Lihat Proyek
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 d-flex justify-content-center">
+                        <div class="position-relative">
+                            <div class="p-2 bg-white border rounded-4-custom shadow-sm">
+                                <img src="image/MuhFauzan.Jpg" alt="Foto Profil" class="avatar-box rounded-3-custom">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION PENDIDIKAN ==================== -->
+    <section id="education" class="mb-5 pt-3">
+        <div class="d-flex align-items-center gap-2 mb-3">
+
+        <div class="mb-4">
+            <span class="text-success font-mono fs-7 fw-bold tracking-wider text-uppercase d-block mb-1">RIWAYAT</span>
+            <h2 class="fw-extrabold text-dark tracking-tight m-0 display-6">Pendidikan</h2>
+        </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4-custom p-4">
+            <div class="d-flex justify-content-between align-items-start flex-wrap mb-2">
+                <div>
+                    <h5 class="fw-bold text-dark m-0">Politeknik Negeri Ujung Pandang (PNUP)</h5>
+                    <span class="fw-semibold text-secondary fs-7">Sarjana Terapan Teknik (S.Tr.T.) - Teknik Informatika dan Komputer</span>
+                </div>
+                <span class="badge badge-soft-secondary font-mono">2022 - 2026</span>
+            </div>
+
+            <div class="fs-7 text-secondary space-y-2 my-2">
+                    <span class="fw-semibold text-primary fs-7">IPK: 3.62 / 4.00</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION PROYEK & KARYA ==================== -->
+    <section id="projects" class="mb-5 pt-3">
+        <div class="d-flex align-items-center gap-2 mb-3">
+
+        <div class="mb-4">
+            <span class="text-success font-mono fs-7 fw-bold tracking-wider text-uppercase d-block mb-1">PORTOFOLIO</span>
+            <h2 class="fw-extrabold text-dark tracking-tight m-0 display-6">Proyek</h2>
+        </div>
+
+        </div>
+
+        <div class="row g-4">
+
+            <!-- PROYEK REVOU CASE STUDY -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4-custom overflow-hidden h-100 d-flex flex-column bg-white">
+                    <img src="image/RevoU.jpg" alt="Proyek RevoU Case Study" class="w-100 border-bottom" style="height: 180px; object-fit: cover;" onerror="this.src='https://placehold.co/600x400/3b82f6/ffffff?text=RevoU+E-Commerce+Case+Study'">
+                    <div class="p-3 d-flex flex-column flex-grow-1">
+                        <h6 class="fw-bold text-dark mb-1">Project RevoU Case Study - Analysis trend dari dataset e-comerce menggunakan Google BigQuery</h6>
+                        <p class="text-muted fs-7 mb-3 leading-relaxed">Menganalisis data e-commerce yang diberikan kemudian menyampaikan temuan bisnis berdasarkan data pada tabel users, order_items, orders, products.</p>
+                        
+                        <div class="d-flex flex-wrap gap-1 mb-3 mt-auto">
+                            <span class="badge bg-light text-dark border font-mono">BigQuery</span>
+                            <span class="badge bg-light text-dark border font-mono">DataStudio</span>
+                            <span class="badge bg-light text-dark border font-mono">SQL</span>
+                            <span class="badge bg-light text-dark border font-mono">Data visualisasi</span>
+                        </div>
+
+                        <a href="detail-proyek.html?id=0" class="btn btn-primary btn-sm rounded-3 w-100 font-semibold d-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-file-earmark-rich"></i> Lihat Studi Kasus
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+ <!-- PROYEK PBL BIG DATA SPARK CLUSTER -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4-custom overflow-hidden h-100 d-flex flex-column bg-white">
+                    <img src="image/bigdata.jfif" alt="Proyek Big Data Spark Cluster" class="w-100 border-bottom" style="height: 180px; object-fit: cover;" onerror="this.src='https://placehold.co/600x400/0284c7/ffffff?text=Big+Data+Spark+Hadoop'">
+                    <div class="p-3 d-flex flex-column flex-grow-1">
+                        <h6 class="fw-bold text-dark mb-1">Project Base Learning - Pengolahan Big Data Terdistribusi Spark & Hadoop</h6>
+                        <p class="text-muted fs-7 mb-3 leading-relaxed">Infrastruktur cluster pemrosesan data sensor IoT terdistribusi berbasis Apache Spark Multi-Node dan HDFS.</p>
+                        
+                        <div class="d-flex flex-wrap gap-1 mb-3 mt-auto">
+                            <span class="badge bg-light text-dark border font-mono">Apache Spark</span>
+                            <span class="badge bg-light text-dark border font-mono">Hadoop HDFS</span>
+                            <span class="badge bg-light text-dark border font-mono">Docker</span>
+                            <span class="badge bg-light text-dark border font-mono">Proxmox</span>
+                        </div>
+
+                        <a href="detail-proyek.html?id=6" class="btn btn-primary btn-sm rounded-3 w-100 font-semibold d-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-file-earmark-rich"></i> Lihat Studi Kasus
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- PROYEK DASHBOARD PENDAPATAN -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4-custom overflow-hidden h-100 d-flex flex-column bg-white">
+                    <img src="image/pendapatan.png" alt="Proyek Dashboard Pendapatan" class="w-100 border-bottom" style="height: 180px; object-fit: cover;" onerror="this.src='https://placehold.co/600x400/f59e0b/ffffff?text=Dashboard+Pendapatan'">
+                    <div class="p-3 d-flex flex-column flex-grow-1">
+                        <h6 class="fw-bold text-dark mb-1">Pelindo Jasa Maritim - Dashboard monitoring pendapatan Pelabuhan Pantoloan dan Toli-Toli</h6>
+                        <p class="text-muted fs-7 mb-3 leading-relaxed">Dashboard Business analisis dan monitoring pendapatan operasional pelabuhan.</p>
+                        
+                        <div class="d-flex flex-wrap gap-1 mb-3 mt-auto">
+                            <span class="badge bg-light text-dark border font-mono">Docker</span>
+                            <span class="badge bg-light text-dark border font-mono">Laravel</span>
+                            <span class="badge bg-light text-dark border font-mono">DBeaver</span>
+                            <span class="badge bg-light text-dark border font-mono">PHP</span>
+                        </div>
+
+                        <a href="detail-proyek.html?id=3" class="btn btn-primary btn-sm rounded-3 w-100 font-semibold d-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-file-earmark-rich"></i> Lihat Studi Kasus
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PROYEK DASHBOARD INVENTORY -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4-custom overflow-hidden h-100 d-flex flex-column bg-white">
+                    <img src="image/inventory.png" alt="Proyek Inventory Maritim" class="w-100 border-bottom" style="height: 180px; object-fit: cover;" onerror="this.src='https://placehold.co/600x400/6366f1/ffffff?text=Inventory+Jasa+Maritim'">
+                    <div class="p-3 d-flex flex-column flex-grow-1">
+                        <h6 class="fw-bold text-dark mb-1">Pelindo Jasa Maritim - Dashboard inventory</h6>
+                        <p class="text-muted fs-7 mb-3 leading-relaxed">Sistem manajemen inventaris operasional kapal PELINDO Jasa Maritim.</p>
+                        
+                        <div class="d-flex flex-wrap gap-1 mb-3 mt-auto">
+                            <span class="badge bg-light text-dark border font-mono">Docker</span>
+                            <span class="badge bg-light text-dark border font-mono">Laravel</span>
+                            <span class="badge bg-light text-dark border font-mono">DBeaver</span>
+                            <span class="badge bg-light text-dark border font-mono">PHP</span>
+                        </div>
+
+                        <a href="detail-proyek.html?id=4" class="btn btn-primary btn-sm rounded-3 w-100 font-semibold d-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-file-earmark-rich"></i> Lihat Studi Kasus
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROYEK UMKM KASIR -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4-custom overflow-hidden h-100 d-flex flex-column bg-white">
+                    <img src="image/umkm2.jpg" alt="Proyek UMKM Kasir" class="w-100 border-bottom" style="height: 180px; object-fit: cover;" onerror="this.src='https://placehold.co/600x400/ec4899/ffffff?text=UMKM+Mr.Thaha+Kopi'">
+                    <div class="p-3 d-flex flex-column flex-grow-1">
+                        <h6 class="fw-bold text-dark mb-1">UMKM Mr.Thaha kopi- Website e-comerce</h6>
+                        <p class="text-muted fs-7 mb-3 leading-relaxed">website Point of Sale & e-katalog interaktif untuk UMKM kedai kopi Mr.Thaha.</p>
+                        
+                        <div class="d-flex flex-wrap gap-1 mb-3 mt-auto">
+                            <span class="badge bg-light text-dark border font-mono">JavaScript</span>
+                            <span class="badge bg-light text-dark border font-mono">MySql</span>
+                            <span class="badge bg-light text-dark border font-mono">Laravel</span>
+                        </div>
+
+                        <a href="detail-proyek.html?id=5" class="btn btn-primary btn-sm rounded-3 w-100 font-semibold d-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-file-earmark-rich"></i> Lihat Studi Kasus
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROYEK SAHABAT PARKIR -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4-custom overflow-hidden h-100 d-flex flex-column bg-white">
+                    <img src="image/apkmobile.jfif" alt="Proyek Sahabat Parkir" class="w-100 border-bottom" style="height: 180px; object-fit: cover;" onerror="this.src='https://placehold.co/600x400/10b981/ffffff?text=Sahabat+Parkir+APK'">
+                    <div class="p-3 d-flex flex-column flex-grow-1">
+                        <h6 class="fw-bold text-dark mb-1">Program Kreativitas Mahasiswa - Aplikasi sahabat parkir (Mobile APK)</h6>
+                        <p class="text-muted fs-7 mb-3 leading-relaxed">Aplikasi mobile Pembayaran parkir otomatis menggunakan ANPR (Automatic Number Plate Recognition) terintegrasi dengan payment gateway.</p>
+                        
+                        <div class="d-flex flex-wrap gap-1 mb-3 mt-auto">
+                            <span class="badge bg-light text-dark border font-mono">Kotlin</span>
+                            <span class="badge bg-light text-dark border font-mono">Java</span>
+                            <span class="badge bg-light text-dark border font-mono">API</span>
+                            <span class="badge bg-light text-dark border font-mono">Android Studio</span>
+                        </div>
+
+                        <a href="detail-proyek.html?id=2" class="btn btn-primary btn-sm rounded-3 w-100 font-semibold d-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-file-earmark-rich"></i> Lihat Studi Kasus
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROYEK SKRIPSI NLP YOUTUBE -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4-custom overflow-hidden h-100 d-flex flex-column bg-white">
+                    <img src="image/skripsi.jpg" alt="Proyek Skripsi NLP" class="w-100 border-bottom" style="height: 180px; object-fit: cover;" onerror="this.src='https://placehold.co/600x400/3b82f6/ffffff?text=Skripsi+NLP+YouTube'">
+                    <div class="p-3 d-flex flex-column flex-grow-1">
+                        <h6 class="fw-bold text-dark mb-1">Implementasi Text Convolutional Neural Network Dengan Fasttext Untuk Deteksi Komentar Spam Bermuatan Perjudian Online Pada Youtube</h6>
+                        <p class="text-muted fs-7 mb-3 leading-relaxed">Sistem deteksi otomatis komentar spam judi online menggunakan Deep Learning.</p>
+                        
+                        <div class="d-flex flex-wrap gap-1 mb-3 mt-auto">
+                            <span class="badge bg-light text-dark border font-mono">Python</span>
+                            <span class="badge bg-light text-dark border font-mono">NLP</span>
+                            <span class="badge bg-light text-dark border font-mono">API</span>
+                            <span class="badge bg-light text-dark border font-mono">TextCNN</span>
+                            <span class="badge bg-light text-dark border font-mono">FastText</span>
+                        </div>
+
+                        <a href="detail-proyek.html?id=1" class="btn btn-primary btn-sm rounded-3 w-100 font-semibold d-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-file-earmark-rich"></i> Lihat Studi Kasus
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+<!-- ==================== SECTION KEAHLIAN ==================== -->
+    <section id="skills" class="mb-5 pt-3">
+        <div class="mb-4">
+            <span class="text-success font-mono fs-7 fw-bold tracking-wider text-uppercase d-block mb-1">KEAHLIAN</span>
+            <h2 class="fw-extrabold text-dark tracking-tight m-0 display-6">Kapabilitas Utama</h2>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4-custom p-4 p-md-5 bg-white">
+            
+            <!-- Icons Row dengan Logo Asli Brand -->
+            <div class="d-flex flex-wrap align-items-center gap-3 gap-md-3 mb-5 pb-3">
+                <div class="skill-pill">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL Logo">
+                    <span>MySQL</span>
+                </div>
+                <div class="skill-pill">
+                    <img src="data:image/jpeg;base64,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" alt="Power BI Logo" onerror="this.src='https://placehold.co/22x22/3b82f6/ffffff?text=BI'">
+                    <span>Power BI</span>
+                </div>
+                <div class="skill-pill">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dbeaver/dbeaver-original.svg" alt="DBeaver Logo">
+                    <span>DBeaver</span>
+                </div>
+                <div class="skill-pill">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROafQUlFFshl7fpS-OG1BsOpsihjvFrMZTN7vLAgtxJA&s=10" alt="SQL Migration Logo">
+                    <span>Microsoft SQL Server Migration Assistant</span>
+                </div>
+                <div class="skill-pill">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python Logo">
+                    <span>Python</span>
+                </div>
+                <div class="skill-pill">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker Logo">
+                    <span>Docker</span>
+                </div>
+                <div class="skill-pill">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR77Jd7pAhNLYCU7EspRv5-lB1aVVIJFZHFOdGKj1Qknw&s=10" alt="BigQuery Logo">
+                    <span>BigQuery</span>
+                </div>
+                <div class="skill-pill">
+                    <img src="data:image/png;base64,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" alt="Looker Studio Logo">
+                    <span>Looker Studio</span>
+                </div>
+                <div class="skill-pill">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP Logo">
+                    <span>PHP</span>
+                </div>
+                <div class="skill-pill">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGlDK-woA8KSdj7DA8dZ7XiAdflUIOrFdp-wcfaz3MOA&s=10" alt="SSMS Logo">
+                    <span>SQL Server Management Studio</span>
+                </div>
+                <div class="skill-pill">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnrI6xf-OFVf55qqnjWJ0rXs6nVe8UgZaq5cDjV7nv8A&s=10" alt="REST API Logo" onerror="this.src='https://placehold.co/22x22/10b981/ffffff?text=API'">
+                    <span>RESTful API</span>
+                </div>
+                <div class="skill-pill">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Laravel Logo">
+                    <span>Laravel</span>
+                </div>
+                <div class="skill-pill">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6z9sTm5L57ACfOc5v9HpjtMsMl4oJjevClIjC-XKF_Q&s=10" alt="Laravel Logo">
+                    <span>GitLab</span>
+                </div>               
+            </div>
+
+            
+            <!-- Sub Category Headers / Bottom Info -->
+            <div class="row g-4 pt-3 border-top">
+                <div class="col-md-6">
+                    <span class="text-uppercase font-mono text-muted fs-8 fw-bold tracking-wider d-block mb-1">
+                        Data Preparation
+                    </span>
+                    <h5 class="fw-bold text-dark m-0">Pengolahan Data</h5>
+                    <p class="text-muted fs-6 leading-relaxed mb-4">
+                        Membuat fungsi menggunakan query, Melakukan proses ETL, ELT 
+                        serta membersihkan dan menyiapkan dataset agar siap 
+                        digunakan untuk analisis.
+                    </p>
+                </div>
+
+                <div class="col-md-6">
+                    <span class="text-uppercase font-mono text-muted fs-8 fw-bold tracking-wider d-block mb-1">
+                        Full-Stack Web Developer
+                    </span>
+                    <h5 class="fw-bold text-dark m-0">Membuat & Maintenance Website</h5>
+                    <p class="text-muted fs-6 leading-relaxed mb-4">
+                        Mengembangkan dan memelihara aplikasi web dari sisi frontend 
+                        maupun backend, mengintegrasikan basis data dan API, serta 
+                        memastikan fungsionalitas dan performa aplikasi berjalan optimal.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4 pt-3 border-top">
+                <div class="col-md-6">
+                    <span class="text-uppercase font-mono text-muted fs-8 fw-bold tracking-wider d-block mb-1">
+                        Data Analytics
+                    </span>
+                    <h5 class="fw-bold text-dark m-0">Analytics & Visualisasi Data</h5>
+                    <p class="text-muted fs-6 leading-relaxed mb-4">
+                        Melakukan analisis data dari data transaksional, mengidentifikasi pola 
+                        serta tren, dan menyajikan informasi melalui visualisasi  
+                        untuk mendukung pengambilan keputusan berbasis data.
+                    </p>
+                </div>
+                
+                <div class="col-md-6">
+                    <span class="text-uppercase font-mono text-muted fs-8 fw-bold tracking-wider d-block mb-1">
+                        Machine Learning
+                    </span>
+                    <h5 class="fw-bold text-dark m-0">Pemrograman LLM & NLP</h5>
+                    <p class="text-muted fs-6 leading-relaxed mb-4">
+                        Mengembangkan AI (NLP, LLM) dan model 
+                        machine learning untuk klasifikasi teks, analisis komentar, 
+                        serta pemanfaatan model bahasa dalam memahami dan mengolah 
+                        data berbasis teks.
+                    </p>
+                </div>
+
+                <div class="col-md-6">
+                    <span class="text-uppercase font-mono text-muted fs-8 fw-bold tracking-wider d-block mb-1">
+                        Rest API
+                    </span>
+                    <h5 class="fw-bold text-dark m-0">Membuat API</h5>
+                    <p class="text-muted fs-6 leading-relaxed mb-4">
+                        Membuat dan menggunakan API, membuat endpoin,Token, dokumentasi API serta memantau komunikasi data untuk memungkinkan aplikasi 
+                        dan bertukar data melalui jaringan dengan lancar
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== SECTION PENGALAMAN (RIWAYAT PENGALAMAN) ==================== -->
+    <section id="experience" class="mb-5 pt-3">
+        <div class="mb-4">
+            <span class="text-success font-mono fs-7 fw-bold tracking-wider text-uppercase d-block mb-1">   RIWAYAT</span>
+            <h2 class="fw-extrabold text-dark tracking-tight m-0 display-6">   PENGALAMAN</h2>
+        </div>
+
+        <!-- Accordion: setiap kartu membuka detailnya masing-masing -->
+        <div class="d-flex flex-column gap-3" id="experienceAccordion">
+
+            <!-- PT Pelindo Jasa Maritim -->
+            <div class="card border rounded-4-custom overflow-hidden shadow-sm bg-white">
+                <div class="card-header bg-white p-4 border-0 cursor-pointer"
+                     role="button" data-bs-toggle="collapse" data-bs-target="#expPelindo"
+                     aria-expanded="false" aria-controls="expPelindo">
+                    <div class="row align-items-md-center g-3">
+                        <div class="col-md-3 font-mono text-muted fs-7">Agt 2025 - dec 2025</div>
+                        <div class="col-md-4">
+                            <h5 class="fw-bold text-dark mb-0">PT. PELINDO Jasa Maritim</h5>
+                            <span class="text-muted fs-7">Sulawesi Selatan, Makassar</span>
+                        </div>
+                        <div class="col-md-4"><h6 class="fw-bold text-dark mb-0">Junior Programmer Intern</h6></div>
+                        <div class="col-md-1 text-end d-none d-md-block">
+                            <i class="bi bi-plus-lg text-secondary fs-5 toggle-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="expPelindo" class="collapse" data-bs-parent="#experienceAccordion">
+                    <div class="card-body px-4 pb-4 pt-0">
+                        <hr class="mt-0 mb-3 text-muted opacity-25">
+                        <div class="row"><div class="col-md-3"></div><div class="col-md-9">
+                            <ul class="list-unstyled mb-0 d-flex flex-column gap-2 text-secondary fs-7">
+                                <li class="d-flex align-items-start gap-2"><span class="text-success fw-bold font-mono"></span><span>Membuat Visualisasi Data untuk client devisi Keuangan dalam bentuk Dashboard</span></li>
+                                <li class="d-flex align-items-start gap-2"><span class="text-success fw-bold font-mono"></span><span>Menambahkan fitur-fitur pada menu Docking Dashboard Inventory Perusahaan.</span></li>
+                                <li class="d-flex align-items-start gap-2"><span class="text-success fw-bold font-mono"></span><span>Melakukan Debugging pada aplikasi Maroon SPJM.</span></li>
+                                <li class="d-flex align-items-start gap-2"><span class="text-success fw-bold font-mono"></span><span>Pendataan device laptop perusahaan untuk penginstallan antivirus pada semua devisi.</span></li>
+                                <li class="d-flex align-items-start gap-2"><span class="text-success fw-bold font-mono"></span><span>Monitoring sistem Recording komunikasi kapal pandu dan tunda.</span></li>
+                            </ul>
+                        </div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RevoU -->
+            <div class="card border rounded-4-custom overflow-hidden shadow-sm bg-white">
+                <div class="card-header bg-white p-4 border-0 cursor-pointer"
+                     role="button" data-bs-toggle="collapse" data-bs-target="#expRevoU"
+                     aria-expanded="false" aria-controls="expRevoU">
+                    <div class="row align-items-md-center g-3">
+                        <div class="col-md-3 font-mono text-muted fs-7">Okt 2026</div>
+                        <div class="col-md-4">
+                            <h5 class="fw-bold text-dark mb-0">RevoU</h5>
+                            <span class="text-muted fs-7">Jakarta Selatan, Kuningan</span>
+                        </div>
+                        <div class="col-md-4"><h6 class="fw-bold text-dark mb-0">Student of Class Data Analytics</h6></div>
+                        <div class="col-md-1 text-end d-none d-md-block">
+                            <i class="bi bi-plus-lg text-secondary fs-5 toggle-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="expRevoU" class="collapse" data-bs-parent="#experienceAccordion">
+                    <div class="card-body px-4 pb-4 pt-0">
+                        <hr class="mt-0 mb-3 text-muted opacity-25">
+                        <div class="row"><div class="col-md-3"></div><div class="col-md-9">
+                            <ul class="list-unstyled mb-0 d-flex flex-column gap-2 text-secondary fs-7">
+                                <li class="d-flex align-items-start gap-2"><span class="text-success fw-bold font-mono"></span><span>Membuat Analysis trend dari dataset e-comerce </span></li>
+                                <li class="d-flex align-items-start gap-2"><span class="text-success fw-bold font-mono"></span><span>Membuat Data Preparation dari dataset e-comerce menggunakan google bigquery </span></li>
+                                <li class="d-flex align-items-start gap-2"><span class="text-success fw-bold font-mono"></span><span>Mempelajari dasar Data Analyst</span></li>
+                            </ul>
+                        </div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program Kreativitas Mahasiswa -->
+            <div class="card border rounded-4-custom overflow-hidden shadow-sm bg-white">
+                <div class="card-header bg-white p-4 border-0 cursor-pointer"
+                     role="button" data-bs-toggle="collapse" data-bs-target="#expPKM"
+                     aria-expanded="false" aria-controls="expPKM">
+                    <div class="row align-items-md-center g-3">
+                        <div class="col-md-3 font-mono text-muted fs-7">Mei 2024 - Jun 2024</div>
+                        <div class="col-md-4">
+                            <h5 class="fw-bold text-dark mb-0">Program Kreativitas Mahasiswa</h5>
+                            <span class="text-muted fs-7">Sulawesi Selatan, Makassar</span>
+                        </div>
+                        <div class="col-md-4"><h6 class="fw-bold text-dark mb-0">Ketua Tim</h6></div>
+                        <div class="col-md-1 text-end d-none d-md-block">
+                            <i class="bi bi-plus-lg text-secondary fs-5 toggle-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="expPKM" class="collapse" data-bs-parent="#experienceAccordion">
+                    <div class="card-body px-4 pb-4 pt-0">
+                        <hr class="mt-0 mb-3 text-muted opacity-25">
+                        <div class="row"><div class="col-md-3"></div><div class="col-md-9">
+                            <ul class="list-unstyled mb-0 d-flex flex-column gap-2 text-secondary fs-7">
+                                <li class="d-flex align-items-start gap-2"><span class="text-success fw-bold font-mono"></span><span>Menganalisis permasalahan pada lingkungan sekitar</span></li>
+                                <li class="d-flex align-items-start gap-2"><span class="text-success fw-bold font-mono"></span><span>Merancang sistem payment gateway dan model AI</span></li>
+                                <li class="d-flex align-items-start gap-2"><span class="text-success fw-bold font-mono"></span><span>Membagi tugas pada setiap anggota</span></li>
+                                <li class="d-flex align-items-start gap-2"><span class="text-success fw-bold font-mono"></span><span>Melakukan konsultasi dan koordinasi secara berkala terkait arahan, bimbingan</span></li>
+                            </ul>
+                        </div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UMKM Thaha Group Utama -->
+            <div class="card border rounded-4-custom overflow-hidden shadow-sm bg-white">
+                <div class="card-header bg-white p-4 border-0 cursor-pointer"
+                     role="button" data-bs-toggle="collapse" data-bs-target="#expThaha"
+                     aria-expanded="false" aria-controls="expThaha">
+                    <div class="row align-items-md-center g-3">
+                        <div class="col-md-3 font-mono text-muted fs-7">Jan 2023 - Mei 2023</div>
+                        <div class="col-md-4">
+                            <h5 class="fw-bold text-dark mb-0">UMKM Thaha Group Utama</h5>
+                            <span class="text-muted fs-7">Sulawesi Selatan, Makassar</span>
+                        </div>
+                        <div class="col-md-4"><h6 class="fw-bold text-dark mb-0">Ketua Proyek Web Building</h6></div>
+                        <div class="col-md-1 text-end d-none d-md-block">
+                            <i class="bi bi-plus-lg text-secondary fs-5 toggle-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="expThaha" class="collapse" data-bs-parent="#experienceAccordion">
+                    <div class="card-body px-4 pb-4 pt-0">
+                        <hr class="mt-0 mb-3 text-muted opacity-25">
+                        <div class="row"><div class="col-md-3"></div><div class="col-md-9">
+                            <ul class="list-unstyled mb-0 d-flex flex-column gap-2 text-secondary fs-7">
+                                <li class="d-flex align-items-start gap-2"><span class="text-success fw-bold font-mono"></span><span>Membuat desain antarmuka Website menggunakan Figma, untuk presentasi desain kepada client UMKM.</span></li>
+                                <li class="d-flex align-items-start gap-2"><span class="text-success fw-bold font-mono"></span><span>Mendiskusikan fitur yang ingin dibuat dan cara penggunaannya.</span></li>
+                                <li class="d-flex align-items-start gap-2"><span class="text-success fw-bold font-mono"></span><span>Mengajarkan cara melakukan CRUD pada halaman admin untuk manajemen produk pada katalog.</span></li>
+                            </ul>
+                        </div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Himpunan Mahasiswa Teknik Informatika -->
+            <div class="card border rounded-4-custom overflow-hidden shadow-sm bg-white">
+                <div class="card-header bg-white p-4 border-0 cursor-pointer"
+                     role="button" data-bs-toggle="collapse" data-bs-target="#expHMTI"
+                     aria-expanded="false" aria-controls="expHMTI">
+                    <div class="row align-items-md-center g-3">
+                        <div class="col-md-3 font-mono text-muted fs-7">2024 - 2025</div>
+                        <div class="col-md-4">
+                            <h5 class="fw-bold text-dark mb-0">Himpunan Mahasiswa Teknik Informatika</h5>
+                            <span class="text-muted fs-7">Politeknik Negeri Ujung Pandang, Makassar</span>
+                        </div>
+                        <div class="col-md-4"><h6 class="fw-bold text-dark mb-0">Anggota Divisi Sumber Daya Manusia</h6></div>
+                        <div class="col-md-1 text-end d-none d-md-block">
+                            <i class="bi bi-plus-lg text-secondary fs-5 toggle-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="expHMTI" class="collapse" data-bs-parent="#experienceAccordion">
+                    <div class="card-body px-4 pb-4 pt-0">
+                        <hr class="mt-0 mb-3 text-muted opacity-25">
+                        <div class="row"><div class="col-md-3"></div><div class="col-md-9">
+                            <ul class="list-unstyled mb-0 d-flex flex-column gap-2 text-secondary fs-7">
+                                <li class="d-flex align-items-start gap-2"><span class="text-success fw-bold font-mono"></span><span>Menjadi presidium pada Latihan Dasar Kepemimpinan/LDK.</span></li>
+                            </ul>
+                        </div></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== SECTION KONTAK ==================== -->
+    <section id="contact" class="mb-5 pt-3">
+        <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="p-2 bg-primary-subtle text-primary rounded-3">
+                <i class="bi bi-envelope-check fs-4"></i>
+            </div>
+            <div>
+                <h4 class="fw-bold m-0">Hubungi Saya</h4>
+                <p class="text-muted fs-7 m-0">Terbuka untuk diskusi wawancara kerja, program magang, atau posisi entry-level.</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-5">
+                <div class="d-flex flex-column gap-3">
+                    <div class="card border-0 shadow-sm rounded-3 p-3 d-flex flex-row align-items-center gap-3">
+                        <div class="p-2 bg-primary-subtle text-primary rounded-3">
+                            <i class="bi bi-envelope fs-5"></i>
+                        </div>
+                        <div>
+                            <div class="text-muted fs-8">Email Utama</div>
+                            <a href="mailto:fauzan@example.com" class="fw-bold text-dark text-decoration-none fs-7">muhf97458@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="card border-0 shadow-sm rounded-3 p-3 d-flex flex-row align-items-center gap-3">
+                        <div class="p-2 bg-success-subtle text-success rounded-3">
+                            <i class="bi bi-whatsapp fs-5"></i>
+                        </div>
+                        <div>
+                            <div class="text-muted fs-8">WhatsApp / Telepon</div>
+                            <a href="https://wa.me/6281234567890" target="_blank" class="fw-bold text-dark text-decoration-none fs-7">+62 81355169495</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+  
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-top bg-white py-4 text-center fs-7 text-muted">
+    <p class="m-0">&copy; 2026 Muh. Fauzan Al Syahdan, S.Tr.T. Portofolio</p>
+</footer>
+
+<!-- Bootstrap 5 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
